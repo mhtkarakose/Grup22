@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity implements Camera.PreviewCal
 
     private static final int CAMERA_REQUEST = 1888; // field
 
-    private ImageView imageView;
-    private TextView textView;
+    //private ImageView imageView;
+    //private TextView textView;
     private ProgressBar progressBar;
 
     private FrameLayout frameLayout;
@@ -51,14 +51,16 @@ public class MainActivity extends AppCompatActivity implements Camera.PreviewCal
 
     private Button button2;
 
+    public static Bitmap bmpx;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        imageView = findViewById(R.id.imageView);
+        //imageView = findViewById(R.id.imageView);
 
-        textView = findViewById(R.id.textView);
+        //textView = findViewById(R.id.textView);
 
         progressBar = findViewById(R.id.progressBar);
 
@@ -77,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements Camera.PreviewCal
             @Override
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
-                Bitmap bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+                Bitmap bitmap = bmpx;
                 runFaceDetector(bitmap);
             }
         });
@@ -151,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements Camera.PreviewCal
                     if (smileProb > 0.5) {
                         progressBar.setVisibility(View.INVISIBLE);
                         Toast.makeText(getApplicationContext(), "smile", Toast.LENGTH_LONG).show();
-                        textView.setText("smile");
+                        //textView.setText("smile");
 
                         camera.stopPreview();
                         camera.stopFaceDetection();
@@ -163,13 +165,13 @@ public class MainActivity extends AppCompatActivity implements Camera.PreviewCal
                     } else {
                         progressBar.setVisibility(View.INVISIBLE);
                         Toast.makeText(getApplicationContext(), "Gülmüyor", Toast.LENGTH_LONG).show();
-                        textView.setText("Gülmüyor");
+                        //textView.setText("Gülmüyor");
                         scan = 0;
                     }
                 } else {
                     progressBar.setVisibility(View.INVISIBLE);
                     Toast.makeText(getApplicationContext(), "Tanımlanamıyor", Toast.LENGTH_LONG).show();
-                    textView.setText("Tanımlanamıyor");
+                    //textView.setText("Tanımlanamıyor");
                     scan = 0;
                 }
             }
@@ -178,7 +180,7 @@ public class MainActivity extends AppCompatActivity implements Camera.PreviewCal
         {
             progressBar.setVisibility(View.INVISIBLE);
             Toast.makeText(getApplicationContext(), "Size 0", Toast.LENGTH_LONG).show();
-            textView.setText("Size 0");
+            //textView.setText("Size 0");
             scan = 0;
         }
     }
@@ -256,7 +258,8 @@ public class MainActivity extends AppCompatActivity implements Camera.PreviewCal
                         //if(scan == 0) {
                         //    scan = 1;
                         //   progressBar.setVisibility(View.VISIBLE);
-                            imageView.setImageBitmap(rotatedBitmap);
+                            //imageView.setImageBitmap(rotatedBitmap);
+                        bmpx = rotatedBitmap;
                             //   runFaceDetector(rotatedBitmap);
                         //}
                     }

@@ -38,8 +38,8 @@ public class ObjectActivity extends AppCompatActivity implements Camera.PreviewC
 
     private static final int CAMERA_REQUEST = 1888; // field
 
-    private ImageView imageView;
-    private TextView textView;
+    //private ImageView imageView;
+    //private TextView textView;
     private ProgressBar progressBar;
 
     private FrameLayout frameLayout;
@@ -50,14 +50,16 @@ public class ObjectActivity extends AppCompatActivity implements Camera.PreviewC
 
     private Button button2;
 
+    public static Bitmap bmpx;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_object);
 
-        imageView = findViewById(R.id.imageView);
+        //imageView = findViewById(R.id.imageView);
 
-        textView = findViewById(R.id.textView);
+        //textView = findViewById(R.id.textView);
 
         progressBar = findViewById(R.id.progressBar);
 
@@ -76,7 +78,7 @@ public class ObjectActivity extends AppCompatActivity implements Camera.PreviewC
             @Override
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
-                Bitmap bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+                Bitmap bitmap = bmpx;
                 //runFaceDetector(bitmap);
                 runImageLabelling(bitmap);
             }
@@ -233,7 +235,8 @@ public class ObjectActivity extends AppCompatActivity implements Camera.PreviewC
                         //if(scan == 0) {
                         //    scan = 1;
                         //   progressBar.setVisibility(View.VISIBLE);
-                        imageView.setImageBitmap(rotatedBitmap);
+                        //imageView.setImageBitmap(rotatedBitmap);
+                        bmpx = rotatedBitmap;
                         //   runFaceDetector(rotatedBitmap);
                         //}
                     }

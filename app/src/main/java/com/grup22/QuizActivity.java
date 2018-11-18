@@ -33,7 +33,7 @@ public class QuizActivity extends AppCompatActivity {
     public static final String EXTRA_DATA_KEY = "info_cam";
     List<Data> posts;
 
-    DatabaseReference mRoot = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference mRoot = FirebaseDatabase.getInstance().getReference("topics");
     DatabaseReference mRef;
     mViewHolder viewHolder;
     Data trueData;
@@ -85,7 +85,7 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
-        mRef.addValueEventListener(new ValueEventListener() {
+        /*mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                trueData = dataSnapshot.getValue(Data.class);
@@ -95,7 +95,7 @@ public class QuizActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        });*/
 
 
 if(viewHolder.option1 != null){        viewHolder.option1.setOnClickListener(new View.OnClickListener() {

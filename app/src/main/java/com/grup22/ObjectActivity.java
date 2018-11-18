@@ -132,6 +132,10 @@ public class ObjectActivity extends AppCompatActivity implements Camera.PreviewC
                                         FirebaseVisionLabel label = labels.get(0);
                                         progressBar.setVisibility(View.INVISIBLE);
                                         Toast.makeText(getApplicationContext(), label.getLabel(), Toast.LENGTH_LONG).show();
+
+                                        camera.stopPreview();
+                                        camera.stopFaceDetection();
+
                                         Intent s = new Intent(ObjectActivity.this,QuizActivity.class);
                                         s.putExtra(QuizActivity.EXTRA_DATA_KEY,label.getLabel());
                                         startActivity(s);

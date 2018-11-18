@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "485251288931",
+    "firebase_url": "https://grup22-140a3.firebaseio.com",
+    "project_id": "grup22-140a3",
+    "storage_bucket": "grup22-140a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485251288931:android:8100ff084a6a7499",
+        "android_client_info": {
+          "package_name": "com.grup22"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "485251288931-6netb0pih65lqpkk00sigbegb79jbnkq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfxezgpjoyVR4VNzVggrIQ8A746Oeiyf8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

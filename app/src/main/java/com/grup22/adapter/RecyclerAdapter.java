@@ -2,6 +2,7 @@ package com.grup22.adapter;
 
 import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.grup22.R;
@@ -31,6 +32,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<mViewHolder> {
     @Override
     public void onBindViewHolder(mViewHolder holder, int position) {
         holder.bind(posts.get(position));
+
     }
 
     @Override

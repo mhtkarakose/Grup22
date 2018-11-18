@@ -10,13 +10,20 @@ public class Data {
     String optionsB;
     String optionsC;
     String optionsD;
+    String trueAnswer;
 
-    public Data(String question, String optionsA, String optionsB, String optionsC, String optionsD) {
+    public Data(){
+
+    }
+
+
+    public Data(String question, String optionsA, String optionsB, String optionsC, String optionsD, String trueAnswer) {
         this.question = question;
         this.optionsA = optionsA;
         this.optionsB = optionsB;
         this.optionsC = optionsC;
         this.optionsD = optionsD;
+        this.optionsD = trueAnswer;
     }
 
     public String getQuestion() {
@@ -37,5 +44,9 @@ public class Data {
 
     public String getOptionsD() {
         return optionsD;
+    }
+
+    public String getTrueAnswer() {
+        return trueAnswer;
     }
 }

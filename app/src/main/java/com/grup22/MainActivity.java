@@ -150,8 +150,11 @@ public class MainActivity extends AppCompatActivity implements Camera.PreviewCal
 
                     if (smileProb > 0.5) {
                         progressBar.setVisibility(View.INVISIBLE);
-                        Toast.makeText(getApplicationContext(), "Gülüyor", Toast.LENGTH_LONG).show();
-                        textView.setText("Gülüyor");
+                        Toast.makeText(getApplicationContext(), "smile", Toast.LENGTH_LONG).show();
+                        textView.setText("smile");
+                        Intent s = new Intent(MainActivity.this,QuizActivity.class);
+                        s.putExtra(QuizActivity.EXTRA_DATA_KEY,"smile");
+                        startActivity(s);
                         scan = 0;
                     } else {
                         progressBar.setVisibility(View.INVISIBLE);

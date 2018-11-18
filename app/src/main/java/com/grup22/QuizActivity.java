@@ -6,10 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
@@ -21,7 +19,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.grup22.adapter.RecyclerAdapter;
 import com.grup22.adapter.mViewHolder;
 import com.grup22.model.Data;
-import com.grup22.model.TrueData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,12 +30,14 @@ public class QuizActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     RecyclerAdapter recyclerAdapter;
+    public static final String EXTRA_DATA_KEY = "info_cam";
     List<Data> posts;
 
     DatabaseReference mRoot = FirebaseDatabase.getInstance().getReference();
     DatabaseReference mRef;
     mViewHolder viewHolder;
-    TrueData trueData;
+    Data trueData;
+    String mInfo;
 
 
     @Override
@@ -47,6 +46,11 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+
+        mInfo = getIntent().getStringExtra(EXTRA_DATA_KEY);
+        if(mInfo == null) {
+            throw new IllegalArgumentException("bos");
+        }
 
         posts = new ArrayList<>();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -84,7 +88,7 @@ public class QuizActivity extends AppCompatActivity {
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-               trueData = dataSnapshot.getValue(TrueData.class);
+               trueData = dataSnapshot.getValue(Data.class);
             }
 
             @Override
@@ -93,12 +97,13 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
-        viewHolder.option1.setOnClickListener(new View.OnClickListener() {
+
+if(viewHolder.option1 != null){        viewHolder.option1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Button option1 =(Button)v;
                 String text = option1.getText().toString();
-                if(text.equals(trueData.getTrueAns())){
+                if(text.equals(trueData.getTrueAnswer())){
                     Toast.makeText(QuizActivity.this, "Doğru cevap, tebrikler!", Toast.LENGTH_SHORT).show();
 
                 }
@@ -107,13 +112,14 @@ public class QuizActivity extends AppCompatActivity {
                 }
 
             }
-        });
+        }); }
+        if(viewHolder.option2 != null) {
         viewHolder.option2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Button option2 =(Button)v;
                 String text = option2.getText().toString();
-                if(text.equals(trueData.getTrueAns())){
+                if(text.equals(trueData.getTrueAnswer())){
                     Toast.makeText(QuizActivity.this, "Doğru cevap, tebrikler!", Toast.LENGTH_SHORT).show();
 
                 }
@@ -122,13 +128,14 @@ public class QuizActivity extends AppCompatActivity {
                 }
 
             }
-        });
+        }); }
+        if(viewHolder.option3 != null) {
         viewHolder.option3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Button option3 =(Button)v;
                 String text = option3.getText().toString();
-                if(text.equals(trueData.getTrueAns())){
+                if(text.equals(trueData.getTrueAnswer())){
                     Toast.makeText(QuizActivity.this, "Doğru cevap, tebrikler!", Toast.LENGTH_SHORT).show();
 
                 }
@@ -137,13 +144,14 @@ public class QuizActivity extends AppCompatActivity {
                 }
 
             }
-        });
+        }); }
+        if(viewHolder.option4!= null) {
         viewHolder.option4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Button option4 =(Button)v;
                 String text = option4.getText().toString();
-                if(text.equals(trueData.getTrueAns())){
+                if(text.equals(trueData.getTrueAnswer())){
                     Toast.makeText(QuizActivity.this, "Doğru cevap, tebrikler!", Toast.LENGTH_SHORT).show();
 
                 }
@@ -152,6 +160,6 @@ public class QuizActivity extends AppCompatActivity {
                 }
 
             }
-        });
+        }); }
     }
 }

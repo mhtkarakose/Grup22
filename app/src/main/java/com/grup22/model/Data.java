@@ -6,36 +6,36 @@ package com.grup22.model;
 
 public class Data {
     String question;
-    String trueAnswer;
-    String falseAnswer1;
-    String falseAnswer2;
-    String falseAnswer3;
+    String optionsA;
+    String optionsB;
+    String optionsC;
+    String optionsD;
 
-    public Data(String question, String trueAnswer, String falseAnswer1, String falseAnswer2, String falseAnswer3) {
+    public Data(String question, String optionsA, String optionsB, String optionsC, String optionsD) {
         this.question = question;
-        this.trueAnswer = trueAnswer;
-        this.falseAnswer1 = falseAnswer1;
-        this.falseAnswer2 = falseAnswer2;
-        this.falseAnswer3 = falseAnswer3;
+        this.optionsA = optionsA;
+        this.optionsB = optionsB;
+        this.optionsC = optionsC;
+        this.optionsD = optionsD;
     }
 
     public String getQuestion() {
         return question;
     }
 
-    public String getTrueAnswer() {
-        return trueAnswer;
+    public String getOptionsA() {
+        return optionsA;
     }
 
-    public String getFalseAnswer1() {
-        return falseAnswer1;
+    public String getOptionsB() {
+        return optionsB;
     }
 
-    public String getFalseAnswer2() {
-        return falseAnswer2;
+    public String getOptionsC() {
+        return optionsC;
     }
 
-    public String getFalseAnswer3() {
-        return falseAnswer3;
+    public String getOptionsD() {
+        return optionsD;
     }
 }

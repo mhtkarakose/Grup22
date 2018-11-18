@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context="com.grup22.QuizActivity">
 
+<android.support.v7.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/recyclerView">
 
+</android.support.v7.widget.RecyclerView>
 
 </android.support.constraint.ConstraintLayout>

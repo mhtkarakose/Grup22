@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements Camera.PreviewCal
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
-            //Bitmap picture = (Bitmap) data.getExtras().get("data");//this is your bitmap image and now you can do whatever you want with this
+            //Bitmap picture = (Bitmap) Data.getExtras().get("Data");//this is your bitmap image and now you can do whatever you want with this
             //imageView.setImageBitmap(picture); //for example I put bmp in an ImageView
             //progressBar.setVisibility(View.VISIBLE);
             //runFaceDetector(picture);
@@ -197,7 +197,7 @@ public class MainActivity extends AppCompatActivity implements Camera.PreviewCal
             int width = parameters.getPreviewSize().width;
             int height = parameters.getPreviewSize().height;
 
-            YuvImage yuv = new YuvImage(data, parameters.getPreviewFormat(), width, height, null);
+            YuvImage yuv = new YuvImage(Data, parameters.getPreviewFormat(), width, height, null);
 
             ByteArrayOutputStream out = new ByteArrayOutputStream();
             yuv.compressToJpeg(new Rect(0, 0, width, height),  100, out);

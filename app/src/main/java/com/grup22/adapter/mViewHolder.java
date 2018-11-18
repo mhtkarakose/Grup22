@@ -27,6 +27,8 @@ public class mViewHolder  extends RecyclerView.ViewHolder {
 
     private ButtonClickListener onClickBtnListener = new ButtonClickListener();
 
+    public static int toplamDogruCevap = 0;
+
     public mViewHolder(Activity activity,View itemView) {
         super(itemView);
         this.activity = activity;
@@ -111,6 +113,19 @@ public class mViewHolder  extends RecyclerView.ViewHolder {
             if(text.equals(trueDatas.get(i).getTrueAnswer())){
                 Toast.makeText(activity, "Doğru cevap, tebrikler!", Toast.LENGTH_SHORT).show();
 
+                toplamDogruCevap++;
+
+                if(i + 1 == trueDatas.size())
+                {
+                    if(toplamDogruCevap == i + 1)
+                    {
+                        Toast.makeText(activity, "Kazandınız", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(activity, "Kaybettiniz", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
             else{
                 Toast.makeText(activity, "Yanlış cevap", Toast.LENGTH_SHORT).show();

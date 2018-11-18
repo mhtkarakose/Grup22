@@ -2,6 +2,7 @@ package com.grup22;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -34,13 +35,10 @@ public class QuizActivity extends AppCompatActivity {
     public static List<Data> posts;
 
     DatabaseReference mRoot = FirebaseDatabase.getInstance().getReference("topics");
-    DatabaseReference mRef;
+    DatabaseReference mRef,mPrice;
     //mViewHolder viewHolder;
     Data trueData;
     String mInfo;
-
-
-    public static Data datax;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +64,6 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Data post = dataSnapshot.getValue(Data.class);
-                datax = dataSnapshot.getValue(Data.class);
                 posts.add(post);
                 recyclerAdapter.notifyDataSetChanged();
             }
@@ -87,6 +84,22 @@ public class QuizActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+
+        mPrice = mRoot.child("prices");
+        mPrice.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.child("smile").getValue(String.class);
+                Snackbar.make(findViewById(android.R.id.content), "Bu soruların değeri: " + value,
+                        Snackbar.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
         /*mRef.addValueEventListener(new ValueEventListener() {
             @Override

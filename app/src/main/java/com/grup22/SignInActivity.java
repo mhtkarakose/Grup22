@@ -106,7 +106,7 @@ public class SignInActivity extends AppCompatActivity implements
 
         private void startPhoneNumberVerification(String phoneNumber) {
             PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                    phoneNumber,        // Phone number to verify
+                    "+90" + phoneNumber,        // Phone number to verify
                     60,                 // Timeout duration
                     TimeUnit.SECONDS,   // Unit of timeout
                     this,               // Activity (for callback binding)

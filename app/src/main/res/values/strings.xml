@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">By eM'L</string>
+    <string name="app_name">By eML</string>
     <string name="sign_out">Sign Out</string>
     <string name="hint_phone_number">Enter Phone Number</string>
     <string name="hint_verification_code">Verification Code</string>

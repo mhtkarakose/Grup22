@@ -152,6 +152,10 @@ public class MainActivity extends AppCompatActivity implements Camera.PreviewCal
                         progressBar.setVisibility(View.INVISIBLE);
                         Toast.makeText(getApplicationContext(), "smile", Toast.LENGTH_LONG).show();
                         textView.setText("smile");
+
+                        camera.stopPreview();
+                        camera.stopFaceDetection();
+
                         Intent s = new Intent(MainActivity.this,QuizActivity.class);
                         s.putExtra(QuizActivity.EXTRA_DATA_KEY,"smile");
                         startActivity(s);

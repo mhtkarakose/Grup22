@@ -31,7 +31,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<mViewHolder> {
 
     @Override
     public void onBindViewHolder(mViewHolder holder, int position) {
-        holder.bind(posts.get(position));
+        holder.bind(posts.get(position),position);
+
 
     }
 

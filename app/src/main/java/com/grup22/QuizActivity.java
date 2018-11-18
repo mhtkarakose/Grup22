@@ -31,14 +31,16 @@ public class QuizActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerAdapter recyclerAdapter;
     public static final String EXTRA_DATA_KEY = "info_cam";
-    List<Data> posts;
+    public static List<Data> posts;
 
     DatabaseReference mRoot = FirebaseDatabase.getInstance().getReference("topics");
     DatabaseReference mRef;
-    mViewHolder viewHolder;
+    //mViewHolder viewHolder;
     Data trueData;
     String mInfo;
 
+
+    public static Data datax;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +66,7 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Data post = dataSnapshot.getValue(Data.class);
+                datax = dataSnapshot.getValue(Data.class);
                 posts.add(post);
                 recyclerAdapter.notifyDataSetChanged();
             }
@@ -97,12 +100,16 @@ public class QuizActivity extends AppCompatActivity {
             }
         });*/
 
+        //Toast.makeText(getApplicationContext(), "OnCreate", Toast.LENGTH_SHORT).show();
 
-if(viewHolder.option1 != null){        viewHolder.option1.setOnClickListener(new View.OnClickListener() {
+        if(mViewHolder.option1 != null){        mViewHolder.option1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Button option1 =(Button)v;
                 String text = option1.getText().toString();
+
+                Toast.makeText(getApplicationContext(), "Options 1", Toast.LENGTH_SHORT).show();
+
                 if(text.equals(trueData.getTrueAnswer())){
                     Toast.makeText(QuizActivity.this, "Doğru cevap, tebrikler!", Toast.LENGTH_SHORT).show();
 
@@ -113,8 +120,8 @@ if(viewHolder.option1 != null){        viewHolder.option1.setOnClickListener(new
 
             }
         }); }
-        if(viewHolder.option2 != null) {
-        viewHolder.option2.setOnClickListener(new View.OnClickListener() {
+        if(mViewHolder.option2 != null) {
+            mViewHolder.option2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Button option2 =(Button)v;
@@ -129,8 +136,8 @@ if(viewHolder.option1 != null){        viewHolder.option1.setOnClickListener(new
 
             }
         }); }
-        if(viewHolder.option3 != null) {
-        viewHolder.option3.setOnClickListener(new View.OnClickListener() {
+        if(mViewHolder.option3 != null) {
+            mViewHolder.option3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Button option3 =(Button)v;
@@ -145,8 +152,8 @@ if(viewHolder.option1 != null){        viewHolder.option1.setOnClickListener(new
 
             }
         }); }
-        if(viewHolder.option4!= null) {
-        viewHolder.option4.setOnClickListener(new View.OnClickListener() {
+        if(mViewHolder.option4!= null) {
+            mViewHolder.option4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Button option4 =(Button)v;
@@ -162,4 +169,76 @@ if(viewHolder.option1 != null){        viewHolder.option1.setOnClickListener(new
             }
         }); }
     }
+
+    /*@Override
+    protected void onResume() {
+        super.onResume();
+
+        Toast.makeText(getApplicationContext(), "OnResume", Toast.LENGTH_SHORT).show();
+
+        if(mViewHolder.option1 != null){        mViewHolder.option1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Options 1", Toast.LENGTH_SHORT).show();
+                Button option1 =(Button)v;
+                String text = option1.getText().toString();
+                if(text.equals(trueData.getTrueAnswer())){
+                    Toast.makeText(QuizActivity.this, "Doğru cevap, tebrikler!", Toast.LENGTH_SHORT).show();
+
+                }
+                else{
+                    Toast.makeText(QuizActivity.this, "Yanlış cevap", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }); }
+        if(mViewHolder.option2 != null) {
+            mViewHolder.option2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Button option2 =(Button)v;
+                    String text = option2.getText().toString();
+                    if(text.equals(trueData.getTrueAnswer())){
+                        Toast.makeText(QuizActivity.this, "Doğru cevap, tebrikler!", Toast.LENGTH_SHORT).show();
+
+                    }
+                    else{
+                        Toast.makeText(QuizActivity.this, "Yanlış cevap", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            }); }
+        if(mViewHolder.option3 != null) {
+            mViewHolder.option3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Button option3 =(Button)v;
+                    String text = option3.getText().toString();
+                    if(text.equals(trueData.getTrueAnswer())){
+                        Toast.makeText(QuizActivity.this, "Doğru cevap, tebrikler!", Toast.LENGTH_SHORT).show();
+
+                    }
+                    else{
+                        Toast.makeText(QuizActivity.this, "Yanlış cevap", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            }); }
+        if(mViewHolder.option4!= null) {
+            mViewHolder.option4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Button option4 =(Button)v;
+                    String text = option4.getText().toString();
+                    if(text.equals(trueData.getTrueAnswer())){
+                        Toast.makeText(QuizActivity.this, "Doğru cevap, tebrikler!", Toast.LENGTH_SHORT).show();
+
+                    }
+                    else{
+                        Toast.makeText(QuizActivity.this, "Yanlış cevap", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            }); }
+    }*/
 }

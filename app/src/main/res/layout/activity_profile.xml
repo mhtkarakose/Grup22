@@ -8,14 +8,53 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"
-        android:layout_width="39dp"
-        android:layout_height="39dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="20dp"
         android:layout_marginRight="20dp"
         android:clickable="true"
-        app:srcCompat="@mipmap/ic_launcher_round"
+        app:srcCompat="@drawable/ic_action_add"
+        android:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+        tools:layout_editor_absoluteX="328dp"
+        tools:layout_editor_absoluteY="445dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingFace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="8dp"
+        android:layout_alignParentRight="true"
+        android:layout_above="@+id/floatingActionButton"
+        android:layout_marginRight="20dp"
+        android:clickable="true"
+        app:srcCompat="@drawable/ic_action_face"
+        android:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+        app:backgroundTint="@color/fab1_color"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="328dp"
+        tools:layout_editor_absoluteY="445dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingObject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_alignParentRight="true"
+        android:layout_above="@+id/floatingFace"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="20dp"
+        android:clickable="true"
+        app:srcCompat="@drawable/ic_action_focus"
+        android:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+        app:backgroundTint="@color/fab2_color"
+        android:visibility="invisible"
         tools:layout_editor_absoluteX="328dp"
         tools:layout_editor_absoluteY="445dp" />
 

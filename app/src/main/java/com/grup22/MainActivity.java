@@ -216,10 +216,10 @@ public class MainActivity extends AppCompatActivity implements Camera.PreviewCal
             byte[] bytes = out.toByteArray();
             //final Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);*/
 
-            if (data.length > 0)
-            {
-                Camera.Parameters parameters = camera.getParameters();
+            Camera.Parameters parameters = camera.getParameters();
 
+            if (data.length > 0 && parameters != null)
+            {
                 //parameters.setRotation(90);
 
                 int width = parameters.getPreviewSize().width;
@@ -268,9 +268,9 @@ public class MainActivity extends AppCompatActivity implements Camera.PreviewCal
                 });
             }
         } catch (Exception e) {
-            Toast toast = Toast
+            /*Toast toast = Toast
                     .makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG);
-            toast.show();
+            toast.show();*/
         }
     }
 }

@@ -22,6 +22,10 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.TimeUnit;
 
@@ -91,6 +95,24 @@ public class SignInActivity extends AppCompatActivity implements
                             if (task.isSuccessful()) {
                                 Log.d(TAG, "signInWithCredential:success");
                                 FirebaseUser user = task.getResult().getUser();
+                                final String id = user.getUid();
+
+                                FirebaseDatabase.getInstance().getReference("topics").child(id).addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        String k = dataSnapshot.child("kazanc").getValue(String.class);
+
+                                        if(k == null)
+                                        {
+                                            FirebaseDatabase.getInstance().getReference("topics").child(id).child("kazanc").setValue("0");
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
                                 startActivity(new Intent(SignInActivity.this, ProfileActivity.class));
                                 finish();
                             } else {

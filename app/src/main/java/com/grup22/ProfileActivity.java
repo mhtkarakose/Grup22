@@ -3,6 +3,7 @@ package com.grup22;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -17,17 +18,25 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 public class ProfileActivity extends AppCompatActivity {
     FloatingActionButton camButton,faceButton,objectButton;
-    RatingBar ratingBar;
-    TextView number;
+    TextView number,kazancText;
 
     Animation fabOpen,fabClose,fabRClockwise,fabRanticlockwise;
 
     boolean isOpen = false;
 
+    DatabaseReference kazanc = FirebaseDatabase.getInstance().getReference("topics");
     public static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 999;
 
     @Override
@@ -39,6 +48,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         faceButton = (FloatingActionButton)findViewById(R.id.floatingFace);
         objectButton = (FloatingActionButton)findViewById(R.id.floatingObject);
+        kazancText = (TextView)findViewById(R.id.kazancText);
 
         fabOpen = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_open);
         fabClose = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_close);
@@ -144,6 +154,24 @@ public class ProfileActivity extends AppCompatActivity {
                 }
             }
         });
+        final String uid = FirebaseAuth.getInstance().getUid();
+
+        kazanc.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String kazancVal = dataSnapshot.child(uid).child("kazanc").getValue(String.class);
+                kazancText.setText("Toplam Kazancınız: " + kazancVal + " Türk Lirası");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+       String phoneNumber = FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
+       number.setText( phoneNumber + " numaralı hat sahibi");
+
     }
 
     @Override

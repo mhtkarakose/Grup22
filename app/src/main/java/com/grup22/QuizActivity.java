@@ -68,7 +68,7 @@ public class QuizActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(recyclerAdapter);
 
-        mRef = mRoot.child("Mobile phone");
+        mRef = mRoot.child(mInfo);
         mRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -98,7 +98,7 @@ public class QuizActivity extends AppCompatActivity {
         mPrice.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.child("Mobile phone").getValue(String.class);
+                String value = dataSnapshot.child(mInfo).getValue(String.class);
                 deger = Integer.parseInt(value.replace(" TL",""));
                 Snackbar.make(findViewById(android.R.id.content), "Bu soruların değeri: " + value,
                         Snackbar.LENGTH_LONG).show();

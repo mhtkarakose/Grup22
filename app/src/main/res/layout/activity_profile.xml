@@ -71,7 +71,7 @@
             android:layout_marginRight="20dp"
             android:gravity="center"
             android:textStyle="bold"
-            android:text="Telefon Numarası"
+            android:text=""
             android:textSize="30sp"/>
 
         <TextView
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:fontFamily="@font/lato"
-            android:text="Kazanc degeri"
+            android:text=""
         android:background="@drawable/rounded_corner"
 
             android:textColor="@android:color/white"

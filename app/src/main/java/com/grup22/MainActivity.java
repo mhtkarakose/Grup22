@@ -35,6 +35,8 @@ import java.util.List;
 
 import android.graphics.YuvImage;
 
+import info.hoang8f.widget.FButton;
+
 public class MainActivity extends AppCompatActivity implements Camera.PreviewCallback {
 
     private static final int CAMERA_REQUEST = 1888; // field
@@ -49,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements Camera.PreviewCal
 
     public static int scan = 0;
 
-    private Button button2;
+    private FButton button2;
 
     public static Bitmap bmpx;
 

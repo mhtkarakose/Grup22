@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ObjectActivity">
+    tools:context=".ObjectActivity"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto">
 
-    <FrameLayout
+
+<FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -33,16 +35,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <info.hoang8f.widget.FButton
         android:id="@+id/button2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Button"
+        android:text="seç"
+        android:textColor="@android:color/white"
+        app:fButtonColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        fbutton:cornerRadius="10dp"
+        fbutton:shadowColor="@color/grey" />
 
 </android.support.constraint.ConstraintLayout>

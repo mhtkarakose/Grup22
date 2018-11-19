@@ -34,6 +34,8 @@ import com.google.firebase.ml.vision.label.FirebaseVisionLabelDetectorOptions;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
+import info.hoang8f.widget.FButton;
+
 public class ObjectActivity extends AppCompatActivity implements Camera.PreviewCallback {
 
     private static final int CAMERA_REQUEST = 1888; // field
@@ -48,7 +50,7 @@ public class ObjectActivity extends AppCompatActivity implements Camera.PreviewC
 
     public static int scan = 0;
 
-    private Button button2;
+    private FButton button2;
 
     public static Bitmap bmpx;
 

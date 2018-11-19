@@ -7,4 +7,10 @@
     <color name="grey_300">#E0E0E0</color>
     <color name="fab1_color">#4CAF50</color>
     <color name="fab2_color">#2196F3</color>
+    <color name="grey">#757171</color>
+    <color name="transparent">#88000000</color>
+    <color name="green">#008000</color>
+
+
+
 </resources>

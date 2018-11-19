@@ -1,5 +1,8 @@
 package com.grup22;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -8,7 +11,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
@@ -23,6 +28,8 @@ import com.grup22.model.Data;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import info.hoang8f.widget.FButton;
 
 public class QuizActivity extends AppCompatActivity {
 
@@ -39,6 +46,8 @@ public class QuizActivity extends AppCompatActivity {
     //mViewHolder viewHolder;
     Data trueData;
     String mInfo;
+
+    public static int deger;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +68,7 @@ public class QuizActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(recyclerAdapter);
 
-        mRef = mRoot.child("smile");
+        mRef = mRoot.child("Mobile phone");
         mRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -89,7 +98,8 @@ public class QuizActivity extends AppCompatActivity {
         mPrice.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.child("smile").getValue(String.class);
+                String value = dataSnapshot.child("Mobile phone").getValue(String.class);
+                deger = Integer.parseInt(value.replace(" TL",""));
                 Snackbar.make(findViewById(android.R.id.content), "Bu soruların değeri: " + value,
                         Snackbar.LENGTH_LONG).show();
             }
@@ -254,4 +264,5 @@ public class QuizActivity extends AppCompatActivity {
                 }
             }); }
     }*/
+
 }
